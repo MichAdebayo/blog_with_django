@@ -1,16 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Liste des articles</title>
-</head>
-<body>
-    <h1> Liste des articles</h1>
+{% extends "base.html" %}
+
+{% block title %}Liste des articles{% endblock %}
+
+{% block  content %}
+    <h2>Liste des articles</h2>
+
+    <form method="get" action="">
+        <input type="text" name="q" placeholder="Recherche un article">
+        <button type="submit">Recherche</button>
+    </form>
+    
+    <form method="get" action="">
+        <input type="text" name="q" placeholder="Recherche un article">
+        <button type="submit">Recherche</button>
+    </form>
+    
     <ul>
         {% for article in articles %}
-            <li>{{article.titre}} - {{article.date_publication}}</li>
-            {% endfor %}
+            <li>
+                <p><strong>{{article.titre }}</strong> - {{article.date_publication|date:"D M Y" }} - {{article.category }}</p>
+                <p>{{ article.contenu }}</p>
+            </li>
+        {% endfor %}
     </ul>
-</body>
-</html>
+{% endblock %}
