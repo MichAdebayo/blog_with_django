@@ -1,25 +1,22 @@
 {% extends "base.html" %}
 
-{% block title %}Liste des articles{% endblock %}
+{% block title %}Articles{% endblock %}
 
 {% block  content %}
-    <h2>Liste des articles</h2>
+    <h2>Welcome to Django Sports Blog</h2>
 
     <form method="get" action="">
-        <input type="text" name="q" placeholder="Recherche un article">
-        <button type="submit">Recherche</button>
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Search</button>
     </form>
-    
-    <form method="get" action="">
-        <input type="text" name="q" placeholder="Recherche un article">
-        <button type="submit">Recherche</button>
-    </form>
-    
+
     <ul>
         {% for article in articles %}
-            <li>
+            <li class="Article">
                 <p><strong>{{article.titre }}</strong> - {{article.date_publication|date:"D M Y" }} - {{article.category }}</p>
                 <p>{{ article.contenu }}</p>
+
             </li>
         {% endfor %}
     </ul>

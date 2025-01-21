@@ -1,26 +1,40 @@
-from django.views.generic import ListView
+from django.views.generic import ListView, FormView
 from django.views.generic.edit import CreateView
 from django.urls import reverse_lazy
 
 from .models import Article, ArticleCategory
-from .forms import ArticleForm, CategoryForm
+from .forms import ArticleForm, CategoryForm, ArticleFilterForm
 
 # Create your views here.
-class ListeArticlesView(ListView):
+class ListeArticlesView(FormView, ListView):
     model = Article # Specify the model to use
     template_name = 'blog/liste_articles.html' # Specify the template
     context_object_name = 'articles' # The name to use in the template
-
-    # def get_queryset(self):
-    #     articles = Article.objects.all().order_by('-titre')
-    #     return articles
+    form_class = ArticleFilterForm
 
     def get_queryset(self):
-        # Recover the "q" parameter in the URL
-        query = self.request.GET.get('q')
-        if query:
-            return Article.objects.filter(titre__icontains=query)
-        return Article.objects.all()
+        queryset =  super().get_queryset()
+        
+        form = ArticleFilterForm(self.request.GET)
+
+        if form.is_valid():
+            search_title = form.cleaned_data.get('titre')
+            search_category = form.cleaned_data.get('category')
+            search_date = form.cleaned_data.get('date_publication')
+
+            filtered_article_set = {}
+        
+            if search_title:
+                filtered_article_set['titre__icontains'] = search_title
+            if search_category:
+                filtered_article_set['category'] = search_category
+            if search_date:
+                filtered_article_set['date_publication'] = search_date
+
+            queryset = queryset.filter(**filtered_article_set)
+
+        return queryset
+
 
 class CreerArticleView(CreateView):
     model = Article

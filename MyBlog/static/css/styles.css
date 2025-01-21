@@ -10,21 +10,24 @@ body {
     background-color: #f9f9f9;
     color: #333;
     padding: 20px;
+    position: relative;
 }
 
 h1, h2 {
     color: #444;
     margin-bottom: 20px;
     text-align: center;
+    font-size: absolute;
 }
+
 ul {
     list-style-type: none;
     padding: 0;
     margin: 0 auto;
-    max-width: 800px;
+    max-width: 900px;
 }
 
-li {
+li.Article {
     background-color: #ffffff;
     padding: 20px;
     margin-bottom: 15px;
@@ -34,17 +37,22 @@ li {
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-li:hover {
+li.Article:hover {
     transform: translateY(-5px);
     box-shadow: 0 4px 8px  rgba(0, 0, 0, 2);
 }
 
-li p strong {
+li.Article p strong {
     font-size: 1.2em;
     color: #007BFF;
 }
 
-li p {
+li.Article p {
     margin-top: 10px;
     color: #555
+}
+
+nav {
+    position: absolute;
+    top:20px; left: 40px;
 }

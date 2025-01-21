@@ -8,19 +8,15 @@
 
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 
-    <title>{% block title %}Mon Blog{% endblock %}</title>
-<head/>
+    <title>{% block title %}Django Sports{% endblock %}</title>
+</head>
 <body>
-    <header>
-        <h1/>Bienvenu sur Django Sports Blog</h1>
-        <nav>
-            <a href="/">Accueil</a>
-        </nav>
-    </header>
+    {% include 'includes/header.html' %}
     <main>
         {% block content %}{% endblock %}
     </main>
     <footer>
-        <p>&copy; 2025 Mon Blog</p>
+        <p>&copy; 2025 Django Sports Blog</p>
+    </footer>
 </body>
 </html>
