@@ -1,7 +1,7 @@
 # Purely Sports 
 
 <p align="center">
- <img height=800px src= "https://github.com/user-attachments/assets/5df9573d-da60-467c-a660-52159d392a41"/>
+ <img width=800px src= "https://github.com/user-attachments/assets/5df9573d-da60-467c-a660-52159d392a41"/>
 </p>
 
 Purely Sports is a Django-powered sports blog application with a clean, responsive two-column layout (sidebar navigation & search + main article feed). This repository contains the application used for creating and listing articles and categories, with a modernized UI and CSS.
