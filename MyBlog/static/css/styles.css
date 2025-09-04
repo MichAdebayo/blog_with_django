@@ -54,5 +54,10 @@ li.Article p {
 
 nav {
     position: absolute;
-    top:20px; left: 40px;
+    top:20px; left: 24px;
+}
+
+form {
+    position: absolute;
+    top:50px; left: 40px;
 }
