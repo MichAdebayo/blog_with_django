@@ -6,17 +6,46 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}?v=2">
 
-    <title>{% block title %}Django Sports{% endblock %}</title>
+    <title>{% block title %}PURELY SPORTS{% endblock %}</title>
 </head>
 <body>
-    {% include 'includes/header.html' %}
-    <main>
-        {% block content %}{% endblock %}
-    </main>
-    <footer>
-        <p>&copy; 2025 Django Sports Blog</p>
+    <div class="site-bg"></div>
+
+    <header class="top-header">
+        <h1>Welcome to Django Sports Blog</h1>
+    </header>
+
+    <div class="layout-grid">
+        <aside class="sidebar">
+            {% include 'includes/header.html' %}
+
+            {% if form %}
+            <div class="sidebar-search card">
+                <h3>Search Articles</h3>
+                <form method="get" action="">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit" class="btn-primary">Search</button>
+                </form>
+            </div>
+            {% endif %}
+        </aside>
+
+        <main class="main-content">
+            {% block content %}{% endblock %}
+        </main>
+    </div>
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2025 PURELY SPORTS Blog. All rights reserved.</p>
+            <div class="footer-socials">
+                <a href="#" title="Twitter"><img src="{% static 'img/twitter.svg' %}" alt="Twitter"/></a>
+                <a href="#" title="Instagram"><img src="{% static 'img/instagram.svg' %}" alt="Instagram"/></a>
+                <a href="#" title="Facebook"><img src="{% static 'img/facebook.svg' %}" alt="Facebook"/></a>
+            </div>
+        </div>
     </footer>
 </body>
 </html>

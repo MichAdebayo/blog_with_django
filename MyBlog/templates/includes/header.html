@@ -1,7 +1,15 @@
-<header>
-    <nav>
-        <ul> 
-        <a href="/blog">Articles</a>  <a href="/blog/nouveau/">Create an article</a>  <a href="/blog/nouveau_cat/">Create a category</a>
-        </ul>
+{% load static %}
+<div class="sidebar-nav">
+    <div class="brand">
+        <img src="{% static 'img/sports_logo.svg' %}" alt="Sports Blog Logo" width="56" height="56"/>
+        <div>
+            <div class="brand-title">Django Sports</div>
+            <div class="brand-sub">Sports Blog</div>
+        </div>
+    </div>
+    <nav class="nav-links">
+        <a href="/blog">Articles</a>
+        <a href="/blog/nouveau/">Create Article</a>
+        <a href="/blog/nouveau_cat/">Create Category</a>
     </nav>
-</header>
+</div>
