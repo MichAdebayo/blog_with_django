@@ -5,14 +5,22 @@ from django.urls import reverse_lazy
 from .models import Article, ArticleCategory
 from .forms import ArticleForm, CategoryForm, ArticleFilterForm
 
-# Create your views here.
+
 class ListeArticlesView(FormView, ListView):
+    """View to list and filter articles."""
     model = Article # Specify the model to use
     template_name = 'blog/liste_articles.html' # Specify the template
     context_object_name = 'articles' # The name to use in the template
     form_class = ArticleFilterForm
 
     def get_queryset(self):
+        """Returns a filtered queryset of articles based on form input.
+        
+        This method filters articles by title, category, and publication date if provided in the GET request.
+
+        Returns:
+            QuerySet: A queryset of Article objects filtered according to the form data.
+        """
         queryset =  super().get_queryset()
         
         form = ArticleFilterForm(self.request.GET)
@@ -37,12 +45,14 @@ class ListeArticlesView(FormView, ListView):
 
 
 class CreerArticleView(CreateView):
+    """View to create a new article."""
     model = Article
     form_class = ArticleForm
     template_name = 'blog/creer_article.html'
     success_url = reverse_lazy('liste_articles') # Redirection after creation
 
 class CreerCategoryView(CreateView):
+    """View to create a new article category."""
     model = ArticleCategory
     form_class = CategoryForm
     template_name = 'blog/creer_category.html'
