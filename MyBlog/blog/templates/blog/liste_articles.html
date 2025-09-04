@@ -3,21 +3,20 @@
 {% block title %}Articles{% endblock %}
 
 {% block  content %}
-    <h2>Welcome to Django Sports Blog</h2>
+    <h2 style="color:#0b66d1; text-align:left; margin-bottom:14px;">Latest Articles</h2>
 
-    <form method="get" action="">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Search</button>
-    </form>
-
-    <ul>
+    <ul class="article-list">
         {% for article in articles %}
             <li class="Article">
-                <p><strong>{{article.titre }}</strong> - {{article.date_publication|date:"D M Y" }} - {{article.category }}</p>
-                <p>{{ article.contenu }}</p>
-
+                <div class="article-header">
+                    <span class="article-icon">⚽</span>
+                    <p class="article-title">{{ article.titre }}</p>
+                </div>
+                <p class="article-meta">{{ article.date_publication|date:"D M Y" }} &nbsp;|&nbsp; <span style="color:#007BFF">{{ article.category }}</span></p>
+                <p class="article-content">{{ article.contenu }}</p>
             </li>
+        {% empty %}
+            <li class="Article"><p>No articles found. Be the first to create one!</p></li>
         {% endfor %}
     </ul>
 {% endblock %}
