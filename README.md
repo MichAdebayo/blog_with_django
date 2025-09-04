@@ -71,26 +71,6 @@ Open http://127.0.0.1:8000/blog/ to view the site.
 
 If you update CSS and don't see changes in the browser, hard-reload (Cmd+Shift+R) or use the cache-busting query parameter already included in `base.html` (`?v=2`).
 
-## Templates & customization
-- `MyBlog/templates/base.html` holds the main two-column layout and includes the sidebar via `includes/header.html`.
-- `MyBlog/templates/includes/header.html` contains the sidebar brand and nav links.
-- The article list template is `MyBlog/blog/templates/blog/liste_articles.html` and expects `articles` and an optional `form` (sidebar `ArticleFilterForm`) in the context.
-
-To change markup or layout:
-- Edit `base.html` to adjust the grid or top header.
-- Edit `styles.css` to tune colors, spacing, and responsive breakpoints.
-
-## Forms and filtering
-- The class-based view `ListeArticlesView` (in `blog/views.py`) uses `FormView` + `ListView` and supplies `ArticleFilterForm`.
-- The sidebar search form submits `GET` parameters and the view filters the queryset accordingly.
-
-## Tests
-- Tests for the `blog` app live in `MyBlog/blog/tests.py` (add tests there).
-- To run tests:
-
-```bash
-python manage.py test
-```
 
 ## Troubleshooting
 - Static files not updating: hard refresh or restart the dev server. A cache-buster `?v=2` is appended to the stylesheet in `base.html` to help.
