@@ -2,17 +2,18 @@
 
 Purely Sports is a Django-powered sports blog application with a clean, responsive two-column layout (sidebar navigation & search + main article feed). This repository contains the application used for creating and listing articles and categories, with a modernized UI and CSS.
 
-## Project structure (important files)
-- `MyBlog/` - Django project settings and main app wiring.
-- `MyBlog/blog/` - The app containing models, views, forms, templates and tests.
-	- `models.py` - Article and ArticleCategory models.
-	- `views.py` - Class-based views (list, create).
-	- `forms.py` - Article form and `ArticleFilterForm` used for the sidebar search.
-	- `templates/blog/` - App templates (`liste_articles.html`, `creer_article.html`, `creer_category.html`).
-- `MyBlog/templates/` - Project-level templates (including `base.html` and `includes/header.html`).
-- `MyBlog/static/css/styles.css` - Main stylesheet (two-column layout, article cards, sidebar styles).
-- `MyBlog/static/img/` - Place to add logo and social icons (SVGs recommended).
-- `db.sqlite3` - Development SQLite database (ignored for production).
+## Project structure
+
+
+```
+MyBlog/
+├── manage.py
+├── db.sqlite3
+├── MyBlog/            # project settings and URLs (settings.py, urls.py, wsgi/asgi)
+├── blog/              # core blog app (models, views, forms, templates)
+├── static/            # compiled/static assets (css, img, js)
+└── templates/         # shared templates (base.html, includes)
+```
 
 ## Features
 - Two-column responsive layout: left sidebar (nav + search), right content (articles).
