@@ -2,16 +2,19 @@ from django import forms
 from .models import Article, ArticleCategory
 
 class CategoryForm(forms.ModelForm):
+    """Form for creating and updating article categories."""
     class Meta:
         model = ArticleCategory
         fields = ['name']
 
 class ArticleForm(forms.ModelForm):
+    """Form for creating and updating articles."""
     class Meta:
         model = Article
         fields = ['titre', 'contenu', 'category']
 
 class ArticleFilterForm(forms.Form):
+    """Form for filtering articles based on title, category, and publication date."""
     
     titre =  forms.CharField(label="Search by Word", max_length=100, widget=forms.TextInput(attrs={"size" : 17}), required=False)
     category = forms.ModelChoiceField(label="Search by category", queryset=ArticleCategory.objects.all(), required=False) 
