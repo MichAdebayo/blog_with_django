@@ -3,10 +3,10 @@
 {% block title %}Create an article{% endblock %}
 
 {% block  content %}
-    <h2>Create a new article</h2>
+    <h2><span style="color:#007BFF">Create a New Article</span></h2>
     <form method="post">
         {% csrf_token %}
-        {{ form.as_p}}
-        <button type="submit">Create</button>
+        {{ form.as_p }}
+        <button type="submit"><span style="font-weight:700">⚽ Publish</span></button>
     </form>
 {% endblock %}
